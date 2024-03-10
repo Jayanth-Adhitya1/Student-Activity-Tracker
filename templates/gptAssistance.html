@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Assistance System</title>
+    <script src="ChatGPT.js?v=14"></script>
+    <style>
+        #idContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        textarea {
+            width: 100%;
+            margin-top: 8px;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        button, select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #336699;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        label {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body onload="OnLoad()">
+    <div id="idContainer">
+        <textarea id="txtOutput" rows="10" placeholder="Answer"></textarea>
+
+        <div>
+            <button type="button" onclick="Send()" id="btnSend">Send</button>
+            <label id="lblSpeak">
+                <input id="chkSpeak" type="checkbox" onclick="SpeechToText()" />
+                Voice - Recognition
+            </label>
+            <label id="lblMute">
+                <input id="chkMute" type="checkbox" onclick="Mute(this.checked)"/>
+                Stop Reading
+            </label>
+
+            <select id="selModel">
+                <option value="text-davinci-003">text-davinci-003</option>
+                <option value="text-davinci-002">text-davinci-002</option>
+                <option value="code-davinci-002">code-davinci-002</option>
+            </select>
+
+            <select id="selLang" onchange="ChangeLang(this)">
+                <option value="en-US">English (United States)</option>
+                <option value="fr-FR">French (France)</option>
+                <option value="ru-RU">Russian (Russia)</option>
+                <option value="pt-BR">Portuguese (Brazil)</option>
+                <option value="es-ES">Spanish (Spain)</option>
+                <option value="de-DE">German (Germany)</option>
+                <option value="it-IT">Italian (Italy)</option>
+                <option value="pl-PL">Polish (Poland)</option>
+                <option value="nl-NL">Dutch (Netherlands)</option>
+            </select>
+
+            <select id="selVoices"></select>
+        </div>
+
+        <textarea id="txtMsg" rows="5" wrap="soft" style="width: 98%; margin-left: 3px; margin-top: 6px" placeholder="Ask your Question"></textarea>
+
+        <div id="idText"></div>
+    </div>
+</body>
+</html>
